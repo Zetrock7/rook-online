@@ -1,0 +1,2 @@
+#upcard-area { display: none; }
+#upcard-area.visible { display: flex; }
