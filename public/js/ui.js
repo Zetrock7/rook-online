@@ -504,6 +504,13 @@ function renderScoringOverlay(room) {
   const teamA = [room.players[0], room.players[2]];
   const teamB = [room.players[1], room.players[3]];
 
+  const handPointsEl = document.getElementById("score-hand-points");
+  if (handPointsEl) {
+    const teamAName = teamA.map(p => p.username).join(" & ");
+    const teamBName = teamB.map(p => p.username).join(" & ");
+    handPointsEl.textContent = `${teamAName}: ${result.teamAPoints} pts  |  ${teamBName}: ${result.teamBPoints} pts`;
+  }
+
   document.getElementById("score-team-a-name").textContent = teamA.map(p => p.username).join(" & ");
   document.getElementById("score-team-b-name").textContent = teamB.map(p => p.username).join(" & ");
   document.getElementById("score-team-a-pts").textContent  = room.scores.teamA ?? 0;
