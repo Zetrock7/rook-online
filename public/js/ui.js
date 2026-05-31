@@ -367,7 +367,10 @@ function renderNestOverlay(room) {
   if (!me?.hand?.length) return;
 
   // Only rebuild when card count changes (i.e. nest just merged in)
-  if (container.children.length !== me.hand.length) {
+
+  const handFingerprint = me.hand.map(c => c.id).sort().join(",");
+
+  if (container.dataset.fingerprint !== handFingerprint) {
     container.innerHTML = "";
     sortHand(me.hand).forEach((card) => {
       const el = document.createElement("div");
